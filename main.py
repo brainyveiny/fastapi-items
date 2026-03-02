@@ -27,7 +27,7 @@ def create_table():
     conn.close()
 
 
-@app.post("/items/{item_id}")
+@app.post("/items/{item_id}", tags=["CRUD opp"])
 def create_item(item_id: int, item: Item):
     conn = get_connection()
     cur = conn.cursor()
@@ -48,7 +48,7 @@ def create_item(item_id: int, item: Item):
     return {"id": item_id, "name": item.name, "price": item.price, "description": item.description}
 
 
-@app.get("/items/{item_id}")
+@app.get("/items/{item_id}", tags=["CRUD opp"])
 def read_item(item_id: int):
     conn = get_connection()
     cur = conn.cursor()
@@ -65,7 +65,7 @@ def read_item(item_id: int):
     return {"id": row[0], "name": row[1], "price": row[2], "description": row[3]}
 
 
-@app.put("/items/{item_id}")
+@app.put("/items/{item_id}", tags=["CRUD opp"])
 def update_item(item_id: int, item: Item):
     conn = get_connection()
     cur = conn.cursor()
@@ -86,7 +86,7 @@ def update_item(item_id: int, item: Item):
     return {"id": item_id, "name": item.name, "price": item.price, "description": item.description}
 
 
-@app.delete("/items/{item_id}")
+@app.delete("/items/{item_id}", tags=["CRUD opp"])
 def delete_item(item_id: int):
     conn = get_connection()
     cur = conn.cursor()
